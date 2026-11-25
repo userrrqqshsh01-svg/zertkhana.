@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="kk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ғылыми дереккөздерді сүзу</title>
+<style>
+:root{--acc:#d97706;--ink:#2b2350;--mut:#6a6590;--line:#e4defb;--ok:#12a150;--bad:#e5484d;--soft:#f3efff;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:17px/1.55 "Segoe UI",Calibri,Arial,sans-serif;background:#fff linear-gradient(135deg,#fff7e6 0%,#ffe9f4 35%,#e8f1ff 70%,#e6fff4 100%) fixed}
+.wrap{max-width:860px;margin:0 auto;padding:16px 14px 70px}
+.bar{position:sticky;top:0;z-index:5;height:10px;background:#fff;border-radius:0 0 8px 8px;overflow:hidden;box-shadow:0 2px 8px #0002}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff4d8d,#ffb020,#22c55e,#3b82f6);transition:width .4s}
+header{background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 55%,#ff4d8d));color:#fff;border-radius:24px;padding:24px 22px 20px;margin-top:12px;box-shadow:0 10px 26px color-mix(in srgb,var(--acc) 35%,transparent);position:relative;overflow:hidden}
+header:after{content:"🔎";position:absolute;right:14px;top:6px;font-size:84px;opacity:.28}
+header small{font-weight:800;letter-spacing:.12em;background:#fff3;padding:4px 10px;border-radius:99px}
+h1{margin:12px 0 6px;font-size:1.65rem;line-height:1.2}header p{margin:4px 0 0}
+.id{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:10px;margin:14px 0}
+.id label{font-size:.8rem;font-weight:700;color:var(--mut);display:block}
+input[type=text],input[type=date],textarea,select{width:100%;font:inherit;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:12px;padding:9px 12px;outline:0}
+input:focus,textarea:focus,select:focus{border-color:var(--acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 18%,transparent)}
+textarea{min-height:96px;resize:vertical}
+.goal{background:#fff;border:2px dashed var(--acc);border-radius:18px;padding:14px 16px;margin:10px 0}
+.tool{display:inline-block;margin-top:10px;background:var(--acc);color:#fff;font-weight:800;text-decoration:none;padding:10px 18px;border-radius:999px;box-shadow:0 4px 12px color-mix(in srgb,var(--acc) 40%,transparent)}
+.task{background:#fff;border:2px solid var(--line);border-left:9px solid var(--acc);border-radius:20px;padding:16px 18px;margin:16px 0;box-shadow:0 6px 18px #4b2fd01a}
+.task h2{margin:0 0 6px;font-size:1.15rem;display:flex;align-items:center;gap:10px}
+.num{display:inline-grid;place-items:center;min-width:32px;height:32px;border-radius:50%;background:var(--acc);color:#fff;font-size:.95rem}
+.hint{color:var(--mut);font-size:.92rem;margin:0 0 10px}
+.q{margin:12px 0;padding-top:10px;border-top:2px dotted var(--line)}.q:first-of-type{border-top:0}
+.opt{display:block;margin:6px 0;padding:9px 12px;border:2px solid var(--line);border-radius:12px;cursor:pointer;background:#fff;transition:.15s}
+.opt:hover{border-color:var(--acc);background:var(--soft)}.opt input{margin-right:9px;accent-color:var(--acc)}
+.opt.ok{border-color:var(--ok);background:#e3f9ec}.opt.bad{border-color:var(--bad);background:#ffe8e9}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center;margin:7px 0}
+select.ok{border-color:var(--ok);background:#e3f9ec}select.bad{border-color:var(--bad);background:#ffe8e9}
+button{font:inherit;font-weight:800;border:0;border-radius:12px;padding:10px 18px;background:var(--acc);color:#fff;cursor:pointer;margin:8px 8px 0 0;box-shadow:0 4px 10px color-mix(in srgb,var(--acc) 35%,transparent)}
+button:active{transform:translateY(1px)}button.sec{background:var(--soft);color:var(--ink);box-shadow:none}
+.fb{font-weight:700;margin-top:8px;min-height:1.2em}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.out{background:var(--soft);border-radius:12px;padding:12px;margin-top:10px;white-space:pre-wrap;border:2px solid var(--line)}
+.ck{display:flex;gap:10px;align-items:flex-start;margin:7px 0;padding:8px 10px;border-radius:12px;background:var(--soft)}.ck input{margin-top:5px;width:20px;height:20px;accent-color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:300px;margin-top:10px;text-align:center}
+.grid div{padding:12px 4px;border-radius:12px;font-weight:800;font-size:1.1rem;background:var(--soft)}.grid .h{background:var(--acc);color:#fff}
+.gap{display:flex;gap:10px;flex-wrap:wrap}.gap>*{flex:1;min-width:120px}
+.sl{display:flex;align-items:center;gap:10px;margin:8px 0}.sl input{flex:1;accent-color:var(--acc)}
+.plant{height:170px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(#dff3ff,#eaffd9);border-radius:16px;margin-top:8px;overflow:hidden}
+.big{font-size:2.2rem;font-weight:900;text-align:center;margin:6px 0}
+.score{position:sticky;bottom:10px;margin:20px 0;background:#fff;border:3px solid var(--acc);border-radius:18px;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 8px 22px #0002}
+.print-only{display:none}
+@media (max-width:560px){.id{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+@media print{body{background:#fff;font-size:12pt}.bar,.score,button,.tool,.fb,.plant,.sl{display:none!important}header{background:#fff!important;color:#000;border:2px solid #000;box-shadow:none}header:after{display:none}
+.task{break-inside:avoid;border:1px solid #000;box-shadow:none}textarea{border:1px solid #000;min-height:110px}.opt,.ck{border:0;background:none;padding:2px 0}select{border:0;border-bottom:1px solid #000;border-radius:0;appearance:none;background:none}.grid div{border:1px solid #000;background:#fff;color:#000}}
+</style></head><body><div class="wrap" id="app"></div>
+<script>
+const D={"id": "research", "no": 4, "cls": "10-сынып", "title": "Ғылыми дереккөздерді сүзу", "sub": "Perplexity AI / Consensus: эпигенетика бойынша мақалаларды Ыбырай тұжырымдарымен салыстыру", "goal": "Сенімді ғылыми дереккөздерді табу, талдау және Ыбырай ойларымен салыстыру.", "tool": "Perplexity AI немесе Consensus", "tool_btn": "Perplexity", "url": "https://www.perplexity.ai", "tasks": [{"type": "match", "title": "Дереккөз сенімділігі", "hint": "Әр дереккөзді бағала.", "opts": ["Сенімді", "Абайлап қарау керек", "Сенімсіз"], "rows": [["Рецензияланатын ғылыми журнал мақаласы", "0"], ["Анонимді блог жазбасы", "2"], ["Университет зерттеуінің ресми беті", "0"], ["Дәлелсіз әлеуметтік желі посты", "2"], ["ЖИ жауабы (дереккөзі көрсетілмеген)", "1"]]}, {"type": "quiz", "title": "Эпигенетика негіздері", "qs": [{"q": "ДНҚ метилденуі нені реттейді?", "o": ["Хромосома санын", "Ген белсенділігін", "Кодон санын", "Рибосоманы"], "a": 1}, {"q": "Эпигенетикалық белгілерге әсер етуі мүмкін фактор:", "o": ["Тамақтану", "Тек ДНҚ тізбегі", "Хромосома саны", "Ештеңе"], "a": 0}, {"q": "Ғылыми мақаланың сенімділігін қалай тексереміз?", "o": ["Автор, журнал, жылы, дереккөз", "Тек тақырыбы", "Тек суреті", "Лайк саны"], "a": 0}]}, {"type": "builder", "title": "Іздеу сұрағын құрастыр", "fields": [["Тақырып", "эпигенетика мен тамақтану"], ["Қосымша шарт", "соңғы 5 жыл, рецензияланған мақалалар"]], "tpl": "{0} туралы {1} бойынша нақты ғылыми дереккөздерді тап. Әр дереккөзге сілтеме, автор және жыл көрсет. Қысқа қорытынды жаз."}, {"type": "open", "title": "Салыстыру кестесі", "hint": "Ыбырайдың бір тұжырымын ғылыми деректермен салыстыр.", "prompts": ["Ыбырай ойы (қысқаша):", "Табылған дереккөз (атауы, автор, жылы, сілтеме):", "Ғылыми дерек не дейді?", "Ұқсастығы мен айырмашылығы:"]}]};
+const $=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY='ws:'+D.id;let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}};
+const scores={};let maxTotal=0;
+const app=document.getElementById('app');
+const hd=$('header','',`<small>ЗЕРТХАНА ПАРАҒЫ · ${esc(D.no)}/5 · ${esc(D.cls)}</small><h1>${esc(D.title)}</h1><p>${esc(D.sub)}</p>`);document.body.insertAdjacentHTML('afterbegin','<div class="bar"><i id="pg"></i></div>');app.appendChild(hd);
+app.appendChild($('div','id',`<div><label>Аты-жөні</label><input type="text" data-k="name"></div><div><label>Сыныбы</label><input type="text" data-k="cls"></div><div><label>Күні</label><input type="date" data-k="date"></div>`));
+app.appendChild($('div','goal',`<b>Мақсаты:</b> ${esc(D.goal)}<br><b>Құрал:</b> ${esc(D.tool)}<br><a class="tool" href="${D.url}" target="_blank" rel="noopener">🔗 ${esc(D.tool_btn)} ашу</a>`));
+const done=new Set();const mark=i=>{done.add(i);upd()};
+function upd(){const pg=document.getElementById('pg');if(pg)pg.style.width=Math.round(done.size/D.tasks.length*100)+'%';const got=Object.values(scores).reduce((a,b)=>a+b,0);const sc=document.getElementById('sc');if(sc)sc.textContent=got+' / '+maxTotal+(maxTotal&&got/maxTotal>=.8?' ⭐⭐⭐':got/maxTotal>=.5?' ⭐⭐':got?' ⭐':'')}
+D.tasks.forEach((t,i)=>{
+ const box=$('section','task',`<h2><span class="num">${i+1}</span>${esc(t.title)}</h2>${t.hint?`<p class="hint">${esc(t.hint)}</p>`:''}`);
+ const id='t'+i;
+ if(t.type==='quiz'){maxTotal+=t.qs.length;
+  t.qs.forEach((q,qi)=>{const qd=$('div','q',`<b>${qi+1}. ${esc(q.q)}</b>`);
+   q.o.forEach((o,oi)=>{const l=$('label','opt',`<input type="radio" name="${id}q${qi}" value="${oi}">${esc(o)}`);
+    l.querySelector('input').addEventListener('change',()=>{saved[id+'q'+qi]=oi;save()});
+    if(saved[id+'q'+qi]===oi)l.querySelector('input').checked=true;qd.appendChild(l)});
+   box.appendChild(qd)});
+  const fb=$('div','fb');const b=$('button','',  'Тексеру');
+  b.onclick=()=>{let ok=0;t.qs.forEach((q,qi)=>{const ls=box.querySelectorAll('input[name="'+id+'q'+qi+'"]');ls.forEach((inp,oi)=>{const lab=inp.parentElement;lab.classList.remove('ok','bad');if(oi===q.a)lab.classList.add('ok');else if(inp.checked)lab.classList.add('bad')});
+   const c=box.querySelector('input[name="'+id+'q'+qi+'"]:checked');if(c&&+c.value===q.a)ok++});
+   mark(id);scores[id]=ok;fb.className='fb '+(ok===t.qs.length?'ok':'bad');fb.textContent=ok===t.qs.length?'Керемет! Барлығы дұрыс 🎉':'Дұрыс жауап: '+ok+' / '+t.qs.length+'. Жасыл — дұрыс нұсқа.';upd()};
+  box.appendChild(b);box.appendChild(fb);
+ }
+ if(t.type==='match'){maxTotal+=t.rows.length;
+  t.rows.forEach((r,ri)=>{const row=$('div','row',`<div>${esc(r[0])}</div>`);const s=$('select');s.innerHTML='<option value="">— таңдаңыз —</option>'+t.opts.map((o,oi)=>`<option value="${oi}">${esc(o)}</option>`).join('');
+   s.dataset.a=r[1];if(saved[id+'m'+ri]!==undefined)s.value=saved[id+'m'+ri];s.onchange=()=>{saved[id+'m'+ri]=s.value;save()};row.appendChild(s);box.appendChild(row)});
+  const fb=$('div','fb');const b=$('button','','Тексеру');
+  b.onclick=()=>{let ok=0;box.querySelectorAll('select').forEach(s=>{s.classList.remove('ok','bad');if(s.value===s.dataset.a){ok++;s.classList.add('ok')}else s.classList.add('bad')});
+   mark(id);scores[id]=ok;fb.className='fb '+(ok===t.rows.length?'ok':'bad');fb.textContent='Дұрыс: '+ok+' / '+t.rows.length;upd()};
+  box.appendChild(b);box.appendChild(fb);
+ }
+ if(t.type==='builder'){
+  t.fields.forEach((f,fi)=>{box.appendChild($('div','q',`<label>${esc(f[0])}</label>`));const inp=$('input');inp.type='text';inp.value=saved[id+'f'+fi]!==undefined?saved[id+'f'+fi]:f[1];inp.dataset.i=fi;inp.oninput=()=>{saved[id+'f'+fi]=inp.value;save()};box.lastChild.appendChild(inp)});
+  const out=$('div','out');out.textContent='Промпт осында шығады…';
+  const b=$('button','','Промпт жасау');b.onclick=()=>{const v=[...box.querySelectorAll('input[data-i]')].map(x=>x.value.trim()||'…');let s=t.tpl;v.forEach((x,i)=>{s=s.split('{'+i+'}').join(x)});out.textContent=s;mark(id)};
+  const c=$('button','sec','Көшіру');c.onclick=()=>{try{navigator.clipboard.writeText(out.textContent);c.textContent='Көшірілді ✓'}catch(e){c.textContent='Мәтінді белгілеп көшіріңіз'}};
+  box.appendChild(b);box.appendChild(c);box.appendChild(out);
+ }
+ if(t.type==='check'){t.items.forEach((it,ii)=>{const l=$('label','ck',`<input type="checkbox"><span>${esc(it)}</span>`);const cb=l.querySelector('input');cb.checked=!!saved[id+'c'+ii];cb.onchange=()=>{saved[id+'c'+ii]=cb.checked;save();mark(id)};box.appendChild(l)})}
+ if(t.type==='open'){t.prompts.forEach((p,pi)=>{const w=$('div','q',`<label><b>${esc(p)}</b></label>`);const ta=$('textarea');ta.value=saved[id+'o'+pi]||'';ta.oninput=()=>{saved[id+'o'+pi]=ta.value;save();if(ta.value.length>5)mark(id)};w.appendChild(ta);box.appendChild(w)})}
+ if(t.type==='punnett'){const mk=()=>{const s=$('select');['AA','Aa','aa'].forEach(g=>s.innerHTML+=`<option>${g}</option>`);return s};
+  const a=mk(),b=mk();a.value='Aa';b.value='Aa';const w=$('div','gap');w.append(a,b);box.appendChild(w);const out=$('div','grid');
+  const run=()=>{const g=x=>x.split('');const cells=[];g(a.value).forEach(p=>g(b.value).forEach(q=>{const c=[p,q].sort().join('');cells.push(c)}));
+   out.innerHTML=cells.map(c=>`<div class="${c==='aa'?'h':''}">${c}</div>`).join('').replace(/(<div[^>]*>[^<]*<\/div>){2}/g,m=>m);out.style.gridTemplateColumns='repeat(2,1fr)';out.style.maxWidth='200px';
+   const n=cells.filter(c=>c==='aa').length;box.querySelector('.fb').textContent='aa ықтималдығы: '+n*25+'%';mark(id)};
+  const b1=$('button','','Пуннет торын құру');b1.onclick=run;const fb=$('div','fb');box.append(b1,fb,out);}
+ if(t.type==='plant'){const mkS=(l,v)=>{const d=$('div','sl',`<span>${l}</span><input type="range" min="0" max="10" value="${v}"><b>${v}</b>`);const r=d.querySelector('input');r.oninput=()=>{d.querySelector('b').textContent=r.value;draw()};return d};
+  const l=mkS('☀️ Жарық',5),wt=mkS('💧 Су',5),pl=$('div','plant'),fb=$('div','fb');box.append(l,wt,pl,fb);
+  function draw(){const v=(+l.querySelector('input').value+ +wt.querySelector('input').value)/2;const h=30+v*13;pl.innerHTML=`<div style="font-size:${h}px;line-height:1">${v<3?'🥀':v<6?'🌱':v<8?'🌿':'🌳'}</div>`;
+   fb.className='fb '+(v>=6?'ok':'bad');fb.textContent='Фенотип: биіктігі ≈ '+Math.round(v*10)+' см. Генотип өзгерген жоқ — тек орта өзгерді.';mark(id)}
+  draw();done.delete(id)}
+ if(t.type==='dna'){const inp=$('input');inp.type='text';inp.value='ATGCCGTA';const out=$('div','out');box.append(inp);
+  const b1=$('button','','Комплемент пен мРНҚ');b1.onclick=()=>{const s=inp.value.toUpperCase().replace(/[^ATGC]/g,'');const c={A:'T',T:'A',G:'C',C:'G'},r={A:'U',T:'A',G:'C',C:'G'};
+   out.textContent='ДНҚ:      '+s.split('').join(' ')+'\nКомплемент: '+s.split('').map(x=>c[x]).join(' ')+'\nмРНҚ:     '+s.split('').map(x=>r[x]).join(' ');mark(id)};box.append(b1,out)}
+ if(t.type==='timer'){const big=$('div','big','03:00');let T=180,iv;const f=()=>big.textContent=String(Math.floor(T/60)).padStart(2,'0')+':'+String(T%60).padStart(2,'0');
+  const b1=$('button','','▶ Бастау');b1.onclick=()=>{clearInterval(iv);T=180;f();iv=setInterval(()=>{T--;f();if(T<=0){clearInterval(iv);big.textContent='⏰ Уақыт бітті!';mark(id)}},1000)};
+  const b2=$('button','sec','Тоқтату');b2.onclick=()=>clearInterval(iv);box.append(big,b1,b2)}
+ app.appendChild(box)});
+app.appendChild($('div','score',`<div>Нәтиже: <b id="sc">0 / 0</b> (автотексеру)</div><div><button onclick="window.print()">🖨 Басып шығару / PDF</button><button class="sec" onclick="if(confirm('Барлық жауапты өшіру?')){try{localStorage.removeItem(KEY)}catch(e){}location.reload()}">Тазалау</button></div>`));
+document.querySelectorAll('input[data-k]').forEach(i=>{i.value=saved['id'+i.dataset.k]||'';i.oninput=()=>{saved['id'+i.dataset.k]=i.value;save()}});
+upd();
+</script></body></html>
